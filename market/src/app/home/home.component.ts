@@ -46,7 +46,7 @@ export class HomeComponent {
         this.loadCards();
       },
       error => {
-        alert('There was an error fetching your data from the server. Please consider retry after a few minutes, if the problem persists please let the owner know!')
+        alert('There was an error fetching your data from the server. Please consider retry after a few minutes, if the problem persists please let the owner know!');
       }
     );
   }
