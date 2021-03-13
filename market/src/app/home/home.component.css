@@ -19,3 +19,9 @@
 .dashboard-card-content {
   text-align: center;
 }
+
+.card-image{
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
