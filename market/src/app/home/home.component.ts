@@ -46,6 +46,7 @@ export class HomeComponent {
         this.cardsForHandset = response.handsetCards;
         this.cardsForWeb = response.webCards;
         this.loadCards();
+        this.notifierService.showNotification("Successfully loaded!", "Alright.", 'success' );
       },
       error => {
         this.notifierService.showNotification("An error occoured while fetching data from the server, please try again in a few minutes!", "Alright.", 'error' );
