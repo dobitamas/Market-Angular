@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-home',
@@ -29,13 +30,25 @@ export class HomeComponent {
   );
 
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+    public appService: AppService) { }
 
   ngOnInit(){
     this.isHandsetObserver.subscribe(currentObserverValue => {
       this.isHandset = currentObserverValue;
       this.loadCards();
     })
+
+    this.appService.getDeals().subscribe(
+      response=>{
+        this.cardsForHandset = response.handsetCards;
+        this.cardsForWeb = response.webCards;
+        this.loadCards();
+      },
+      error => {
+        alert('There was an error fetching your data from the server. Please consider retry after a few minutes, if the problem persists please let the owner know!');
+      }
+    );
   }
 
   loadCards() {
