@@ -16,7 +16,7 @@ export class HomeComponent {
   cardsForHandset = [];
   cardsForWeb = [];
 
-  isHandset:boolean = false;
+  isHandset: boolean = false;
 
  isHandsetObserver: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
@@ -40,7 +40,7 @@ export class HomeComponent {
     })
 
     this.appService.getDeals().subscribe(
-      response=>{
+      response => {
         this.cardsForHandset = response.handsetCards;
         this.cardsForWeb = response.webCards;
         this.loadCards();
@@ -53,5 +53,9 @@ export class HomeComponent {
 
   loadCards() {
     this.cards = this.isHandset? this.cardsForHandset : this.cardsForWeb;
+  }
+
+  getImage(imageName:string): string {
+    return 'url(' + 'http://localhost:3000/images/' + imageName + '.jpg' + ')';
   }
 }
