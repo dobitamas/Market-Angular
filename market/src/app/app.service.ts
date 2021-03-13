@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { getDefaultSettings } from 'node:http2';
 import { Observable } from 'rxjs';
 
 @Injectable({
