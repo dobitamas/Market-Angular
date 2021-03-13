@@ -48,7 +48,7 @@ export class HomeComponent {
         this.loadCards();
       },
       error => {
-        this.notifierService.showNotification("An error occoured while fetching data from the server, please try again in a few minutes!", "Alright." );
+        this.notifierService.showNotification("An error occoured while fetching data from the server, please try again in a few minutes!", "Alright.", 'error' );
       }
     ); 
   }
