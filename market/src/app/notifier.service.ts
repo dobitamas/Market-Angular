@@ -8,8 +8,8 @@ export class NotifierService {
 
   constructor(private snackBar:MatSnackBar) { }
 
-  showNotification() {
-    this.snackBar.open('Notification Message', 'Button Text', {
+  showNotification(message: string, button:string) {
+    this.snackBar.open(message, button, {
       duration: 6500,
       horizontalPosition: 'center',
       verticalPosition: 'bottom'
