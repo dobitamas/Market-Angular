@@ -25,3 +25,8 @@
   background-repeat: no-repeat;
   cursor: pointer;
 }
+
+.card-title {
+  padding-top: 10px;
+  border-radius: 6px;
+}
