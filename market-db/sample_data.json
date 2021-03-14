@@ -1,0 +1,37 @@
+[
+    {"imageName": "Bread",
+         "title": "Bread",
+         "handsetCols" : 2,
+         "handsetRows": 1,
+         "webCols": 2,
+         "webRows": 1 
+    },
+    {"imageName": "Pickle",
+         "title": "Pickle",
+         "handsetCols" : 2,
+         "handsetRows": 1,
+         "webCols": 1,
+         "webRows": 1 
+    },
+    {"imageName": "Tomato",
+         "title": "Tomato",
+         "handsetCols" : 2,
+         "handsetRows": 1,
+         "webCols": 1,
+         "webRows": 2 
+    },
+    {"imageName": "Meat",
+         "title": "Meat",
+         "handsetCols" : 2,
+         "handsetRows": 1,
+         "webCols": 1,
+         "webRows": 1 
+    },
+    {"imageName": "Banana",
+         "title": "Banana",
+         "handsetCols" : 2,
+         "handsetRows": 2,
+         "webCols": 2,
+         "webRows": 2  
+        }
+    ]
