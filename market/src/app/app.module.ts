@@ -20,6 +20,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { NotifierComponent } from './notifier/notifier.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { FormsModule } from '@angular/forms';
     MatMenuModule,
     MatSnackBarModule,
     MatSlideToggleModule,
-    FormsModule
+    FormsModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
