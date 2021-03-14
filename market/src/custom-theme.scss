@@ -37,7 +37,7 @@ $market-theme: mat-light-theme((
 $market-primary-dark: mat-palette($mat-deep-purple);
 $market-accent-dark: mat-palette($mat-cyan, A200, A100, A400);
 
-$market-warn-dark: mat-palette($mat-black);
+$market-warn-dark: mat-palette($mat-grey);
 
 $market-theme-dark: mat-dark-theme((
   color: (
