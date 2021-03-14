@@ -5,9 +5,13 @@
       <mat-card class="dashboard-card card-image" [style.background-image]="getImage(card['imageName'])">
         <mat-card-header class="mat-app-background card-title">
           <mat-card-title>
-            {{card['title']}} 
+            {{card['title']}}
           </mat-card-title>
         </mat-card-header>
+        <mat-card-actions>
+          <button mat-button >Add</button>
+          <button mat-button>View</button>
+        </mat-card-actions>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

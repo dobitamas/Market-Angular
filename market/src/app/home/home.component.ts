@@ -33,7 +33,8 @@ export class HomeComponent {
 
   constructor(private breakpointObserver: BreakpointObserver,
     public appService: AppService,
-    private notifierService:NotifierService) { }
+    private notifierService:NotifierService,
+    private cartService: ) { }
 
   ngOnInit(){
     this.isHandsetObserver.subscribe(currentObserverValue => {
@@ -43,6 +44,7 @@ export class HomeComponent {
 
     this.appService.getDeals().subscribe(
       response => {
+        
         this.cardsForHandset = response.handsetCards;
         this.cardsForWeb = response.webCards;
         this.loadCards();
@@ -60,5 +62,9 @@ export class HomeComponent {
 
   getImage(imageName:string): string {
     return 'url(' + 'http://localhost:3000/images/' + imageName + '.jpg' + ')';
+  }
+
+  addToCart() {
+
   }
 }

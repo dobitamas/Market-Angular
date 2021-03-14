@@ -22,13 +22,17 @@ async function mapDeals(){
         const deals = await db.collection('DEALS').find().toArray();
 
         deals.forEach(element => {
+
             let handsetElement = {}
+            handsetElement['id'] = element['_id'];
             handsetElement['imageName']  = element['imageName'];
             handsetElement['title']  = element['title'];
             handsetElement['rows']  = element['handsetRows'];
             handsetElement['cols']  = element['handsetCols'];
 
             let webElement = {}
+            
+            webElement['id'] = element['_id'];
             webElement['imageName']  = element['imageName'];
             webElement['title']  = element['title'];
             webElement['rows']  = element['webRows']; 
@@ -46,6 +50,10 @@ async function mapDeals(){
     }
 
     return null;
+}
+
+async function addToCart() {
+    
 }
 
 module.exports = {mapDeals} 
