@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { AppService } from '../app.service';
 import { NotifierService } from '../notifier.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +35,7 @@ export class HomeComponent {
   constructor(private breakpointObserver: BreakpointObserver,
     public appService: AppService,
     private notifierService:NotifierService,
-    private cartService: ) { }
+    private cartService: CartService) { }
 
   ngOnInit(){
     this.isHandsetObserver.subscribe(currentObserverValue => {
@@ -64,7 +65,8 @@ export class HomeComponent {
     return 'url(' + 'http://localhost:3000/images/' + imageName + '.jpg' + ')';
   }
 
-  addToCart() {
-
+  onAddClick(itemId : any) {
+    console.log(itemId)
+    this.cartService.addToCart(itemId);
   }
 }
