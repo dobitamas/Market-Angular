@@ -15,4 +15,10 @@ export class CartService {
       .post("http://localhost:3000/addItem/", itemId);
       
   }
+
+  getCart(): Observable<any> {
+    console.log("Getting cart")
+    return this.httpClient
+        .get("http://localhost:3000/getCart");
+  }
 }

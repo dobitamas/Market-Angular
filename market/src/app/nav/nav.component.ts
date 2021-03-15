@@ -31,9 +31,6 @@ export class NavComponent {
       }
     }
 
-    onCartClick() {
-      
-    }
 
   constructor(private breakpointObserver: BreakpointObserver,
     public loaderService:LoaderService) {}

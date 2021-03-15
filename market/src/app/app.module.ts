@@ -22,13 +22,15 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { InterceptorService } from './loader/interceptor.service';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    NotifierComponent
+    NotifierComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
