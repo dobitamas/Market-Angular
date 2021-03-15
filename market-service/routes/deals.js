@@ -11,4 +11,8 @@ router.get('/', function(req, res, next) {
   })
 });
 
+function getDeal(id) {
+  dbAbstractionLayer.getDealById(id);
+}
+
 module.exports = router;
