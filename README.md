@@ -27,8 +27,9 @@ MongoDb and ExpressJS should be added to env variables to be able to use their c
 ### Installing
 
 * Clone the program to a folder
-* Add a database called "market" and add a collection(table) to it.
-* After you added the table, you should import the JSON from Market-Angular/mongo-db/sample_data.json
+* Add a database called "market" and add a collection(named DEALS) to it.
+* After you added the table, you should import the JSON from Market-Angular/mongo-db/deals.json
+* Add a collection(names CART) to the market database and import the JSON from Market-Angular/mongo-db/cart.json
 * Open market-service, run npm install , after it's done, run the same command in market folder.
 * Navigate to market-service and run npm start command, and do the same in market folder.
 * Open browser and navigate to localhost:4200
