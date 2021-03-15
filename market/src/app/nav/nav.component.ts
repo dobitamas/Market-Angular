@@ -31,9 +31,6 @@ export class NavComponent {
       }
     }
 
-    onCartClick() {
-      console.log("clicked")
-    }
 
   constructor(private breakpointObserver: BreakpointObserver,
     public loaderService:LoaderService) {}

@@ -45,7 +45,6 @@ export class HomeComponent {
 
     this.appService.getDeals().subscribe(
       response => {
-        
         this.cardsForHandset = response.handsetCards;
         this.cardsForWeb = response.webCards;
         this.loadCards();
