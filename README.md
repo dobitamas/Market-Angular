@@ -14,6 +14,7 @@ N - NodeJS
 
 
 I started this application as I wanted to get familiar with Angular. Then I found the MEAN stack and wanted to give it a try as I like the idea of it's simplicity.
+Bear in mind that this is my first project with Angular, MongoDB and ExpressJS
 
 
 ## Getting Started
@@ -35,6 +36,24 @@ MongoDb and ExpressJS should be added to env variables to be able to use their c
 ### Executing program
 
 * If you want to enable hot reload on market-service, install nodemon to run it in hot reload.
+
+### Features done (updating as I move forward in the project)
+* Reading items from database
+* Adding items to cart
+* Progress bar when loading something
+* Notification about data load has been done
+* Light/Dark theme switcher
+
+
+### Features planned
+* Deleting from cart is in progress
+* I want to populate every item in the store with more details(such as price, quantity)
+* Filter ingredients by new details
+* Checkout-page
+* Search on page
+* User register/login
+* UI Refactor
+* UI Notifications for every action
 
 ## Help
 
