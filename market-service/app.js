@@ -32,6 +32,11 @@ app.use('/addItem', function(req, res, next) {
   res.json(req.body.itemId)
 })
 
+app.use('/getCart', async function(req, res, next) {
+  var result = await dbAbstractionLayer.getCart();
+  res.json(result);
+})
+
 
 
 

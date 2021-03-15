@@ -89,5 +89,26 @@ function addItemToCart(req, res) {
     
 }
 
+async function getCart() {
+    if(connected) {
+        var items = await  db.collection('DEALS').find().toArray();
+        var cart = await  db.collection('CART').find().toArray();
 
-module.exports = {mapDeals, getDealById, addItemToCart} 
+        var result = []
+
+        
+            items.forEach(item => {
+                cart.forEach(cartItem => {
+                    if(cartItem.itemId.toString() === item._id.toString()) {
+                        result.push(item)
+                    }
+                })
+            });
+        
+
+        return result;
+    }
+}
+
+
+module.exports = {mapDeals, getDealById, addItemToCart, getCart} 
