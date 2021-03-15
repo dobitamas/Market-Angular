@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,7 @@ export class CartService {
 
   addToCart(itemId: string): Observable<any> {
     console.log("Adding to cart")
-    return this.httpClient
+    return this.httpClient 
       .post("http://localhost:3000/addItem/", itemId);
       
   }
@@ -22,8 +22,7 @@ export class CartService {
         .get("http://localhost:3000/getCart");
   }
 
-  deleteFromCart(itemId: string): Observable<any> {
-    return this.httpClient
-        .delete("http://localhost:3000/deleteFromCart/", itemId);
+  deleteFromCart(itemId: string): Observable<void> {
+    return this.httpClient.delete<void>(`http://localhost:3000/deleteFromCart/${itemId}`)
   }
 }

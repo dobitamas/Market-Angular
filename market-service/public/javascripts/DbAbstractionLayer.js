@@ -1,6 +1,5 @@
 var mongodb = require('mongodb');
 var mongoose = require('mongoose');
-var express = require('express');
 
 var connected = false;
 var db = null;
@@ -80,7 +79,7 @@ function addItemToCart(req, res) {
     var itemId = req.body.itemId;
 
     const newCartItem = {
-        "itemId": mongoose.Types.ObjectId(itemId)
+        "itemId": mongodb.ObjectId(itemId)
     }
 
     db.collection('CART').insertOne(newCartItem)
@@ -97,11 +96,13 @@ async function getCart() {
 
         var result = []
 
-        
             items.forEach(item => {
+                console.log("ITEM_ID: ", item._id)
                 cart.forEach(cartItem => {
+                    console.log("Cart ITEM: ", cartItem.itemId)
                     if(cartItem.itemId.toString() === item._id.toString()) {
                         result.push(item)
+                        console.log("FOUND ITEM")
                     }
                 })
             });
@@ -112,8 +113,7 @@ async function getCart() {
 }
 
 async function deleteFromCart(req) {
-    var result = await db.collection('CART').deleteMany({ itemId : new mongodb.ObjectId(req.query.itemId) });
-
+    await db.collection('CART').deleteMany({ itemId : mongodb.ObjectId(req.headers.itemid) });
 
 }
 

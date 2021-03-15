@@ -34,12 +34,14 @@ app.use('/addItem', function(req, res, next) {
 
 app.use('/getCart', async function(req, res, next) {
   var result = await dbAbstractionLayer.getCart();
+  console.log("RESULT: ", result)
   res.json(result);
 })
 
 app.use('/deleteFromCart/', async function(req, res, next) {
-  await dbAbstractionLayer.deleteFromCart(req);
-  res.json();
+  console.log("IN DELETE")
+  var result = await dbAbstractionLayer.deleteFromCart(req);
+  res.json(result);
 })
 
 

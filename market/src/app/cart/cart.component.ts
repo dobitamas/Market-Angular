@@ -16,13 +16,16 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartService.getCart().subscribe(resp => {
+      console.log(resp)
       this.items = resp;
+      console.log(resp);
     })
   }
 
 
-  deleteFromCart(itemId: string) :Observable<any> {
-    this.cartService.
+  deleteFromCart(itemId: string) {
+    console.log("DELETION STARTED")
+    this.cartService.deleteFromCart(itemId);
   }
 
 }
