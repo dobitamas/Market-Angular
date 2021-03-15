@@ -1,5 +1,6 @@
 var mongodb = require('mongodb');
 var mongoose = require('mongoose');
+var express = require('express');
 
 var connected = false;
 var db = null;
@@ -110,5 +111,11 @@ async function getCart() {
     }
 }
 
+async function deleteFromCart(req) {
+    var result = await db.collection('CART').deleteMany({ itemId : new mongodb.ObjectId(req.query.itemId) });
 
-module.exports = {mapDeals, getDealById, addItemToCart, getCart} 
+
+}
+
+
+module.exports = {mapDeals, getDealById, addItemToCart, getCart, deleteFromCart} 

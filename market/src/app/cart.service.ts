@@ -21,4 +21,9 @@ export class CartService {
     return this.httpClient
         .get("http://localhost:3000/getCart");
   }
+
+  deleteFromCart(itemId: string): Observable<any> {
+    return this.httpClient
+        .delete("http://localhost:3000/deleteFromCart/", itemId);
+  }
 }

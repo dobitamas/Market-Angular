@@ -37,6 +37,11 @@ app.use('/getCart', async function(req, res, next) {
   res.json(result);
 })
 
+app.use('/deleteFromCart/', async function(req, res, next) {
+  await dbAbstractionLayer.deleteFromCart(req);
+  res.json();
+})
+
 
 
 
