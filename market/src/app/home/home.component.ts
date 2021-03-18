@@ -67,7 +67,7 @@ export class HomeComponent {
 
   onAddClick(itemId : any) {
     
-    this.cartService.addToCart(itemId).subscribe(
+    this.cartService.addToCart(itemId, 1).subscribe(
       response => {
         this.notifierService.showNotification("Added to cart!", "Okay", "success");
       },
