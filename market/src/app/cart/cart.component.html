@@ -4,5 +4,7 @@
        <button mat-icon-button (click)="deleteFromCart(item['_id'])">
           <mat-icon>delete</mat-icon>
        </button>
+       <p matLine>
+         <span>Quantity:  {{item['quantity']}} </span>
     </mat-list-item>
   </mat-nav-list>

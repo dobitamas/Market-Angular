@@ -23,6 +23,8 @@ import { FormsModule } from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { InterceptorService } from './loader/interceptor.service';
 import { CartComponent } from './cart/cart.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { CartComponent } from './cart/cart.component';
     MatSnackBarModule,
     MatSlideToggleModule,
     FormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}

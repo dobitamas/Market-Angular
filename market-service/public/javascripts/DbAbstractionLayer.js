@@ -81,29 +81,47 @@ async function addItemToCart(req, res) {
     
     var itemId = req.body.itemId;
 
+    var quantity = req.body.quantity;
 
-    const newCartItem = {
-        "itemId": mongodb.ObjectId(itemId)
-    }
 
-    await db.collection('CART').insertOne(newCartItem)
+    var collection = await db.collection('CART');
+
+    var exists = collection.find({"itemId": {$exists: true, $ne: false}} )
+
+
+    if(exists) {
+        await collection.updateOne({'itemId': mongodb.ObjectId(itemId)}, {$inc: {quantity: parseInt(quantity)}})
+    } else {
+        await collection.insertOne({"itemId": mongodb.ObjectId(itemId), "quantity": parseInt(quantity)})
         .then(result => console.log("SUCCESSFULLY ADDED ITEM TO CART"))
         .catch(err => console.log("THIS IS THE ERROR: ", err));
+    }
+    
      
     
 }
+
+
 
 async function getCart() {
     if(connected) {
         var items = await  db.collection('DEALS').find().toArray();
         var cart = await  db.collection('CART').find().toArray();
-
+        console.log()
         var result = []
 
             items.forEach(item => {
+                console.log(item)
                 cart.forEach(cartItem => {
                     if(cartItem.itemId.toString() === item._id.toString()) {
-                        result.push(item)
+                        result.push({"_id": item._id,
+                                    "imageName": item.imageName,
+                                    "title": item.title,
+                                    "handsetCols": item.handsetCols,
+                                    "handsetRows": item.handsetRows,
+                                    "webCols": item.webCols,
+                                    "webRows": item.webRows,
+                                    "quantity": cartItem.quantity})
                     }
                 })
             });
