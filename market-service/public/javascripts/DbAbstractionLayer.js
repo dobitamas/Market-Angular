@@ -81,15 +81,22 @@ async function addItemToCart(req, res) {
     
     var itemId = req.body.itemId;
 
+    var quantity = req.body.quantity;
 
-    const newCartItem = {
-        "itemId": mongodb.ObjectId(itemId),
-        "quantity": parseInt(req.body.quantity)
-    }
 
-    await db.collection('CART').insertOne(newCartItem)
+    var collection = await db.collection('CART');
+
+    var exists = collection.find({"itemId": {$exists: true, $ne: false}} )
+
+
+    if(exists) {
+        await collection.updateOne({'itemId': mongodb.ObjectId(itemId)}, {$inc: {quantity: parseInt(quantity)}})
+    } else {
+        await collection.insertOne({"itemId": mongodb.ObjectId(itemId), "quantity": parseInt(quantity)})
         .then(result => console.log("SUCCESSFULLY ADDED ITEM TO CART"))
         .catch(err => console.log("THIS IS THE ERROR: ", err));
+    }
+    
      
     
 }
