@@ -1,5 +1,6 @@
 [
     {
-        "itemId": {"$oid":"604e569e079ae41cfcab2149"}
+        "itemId": {"$oid":"604e569e079ae41cfcab2149"},
+        "quantity": 0
     }
 ]

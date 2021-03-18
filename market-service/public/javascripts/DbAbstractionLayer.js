@@ -83,7 +83,8 @@ async function addItemToCart(req, res) {
 
 
     const newCartItem = {
-        "itemId": mongodb.ObjectId(itemId)
+        "itemId": mongodb.ObjectId(itemId),
+        "quantity": req.body.quantity
     }
 
     await db.collection('CART').insertOne(newCartItem)

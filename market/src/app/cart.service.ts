@@ -9,7 +9,7 @@ export class CartService {
 
   constructor(public httpClient:HttpClient) { }
 
-  addToCart(itemId: string, quantity: id): Observable<any> {
+  addToCart(itemId: string, quantity: number): Observable<any> {
     return this.httpClient 
       .post("http://localhost:3000/cart/addToCart/", {itemId: itemId, quantity: quantity});
       
