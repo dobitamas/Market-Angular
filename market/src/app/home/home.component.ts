@@ -65,7 +65,7 @@ export class HomeComponent {
   }
 
   onAddClick(itemId : any) {
-    console.log(itemId)
+    console.log("itemId: ", itemId)
     var resp = this.cartService.addToCart(itemId).subscribe();
     console.log('RESP: ', resp)
   }
