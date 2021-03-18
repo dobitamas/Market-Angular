@@ -41,6 +41,7 @@ export class HomeComponent {
     this.isHandsetObserver.subscribe(currentObserverValue => {
       this.isHandset = currentObserverValue;
       this.loadCards();
+      
     })
 
     this.appService.getDeals().subscribe(
@@ -65,8 +66,15 @@ export class HomeComponent {
   }
 
   onAddClick(itemId : any) {
-    console.log("itemId: ", itemId)
-    var resp = this.cartService.addToCart(itemId).subscribe();
-    console.log('RESP: ', resp)
+    
+    this.cartService.addToCart(itemId).subscribe(
+      response => {
+        this.notifierService.showNotification("Added to cart!", "Okay", "success");
+      },
+      error => {
+        this.notifierService.showNotification("Could not add to cart :(", "Ok.", "error");
+      }
+    );
+    
   }
 }
