@@ -101,17 +101,27 @@ async function addItemToCart(req, res) {
     
 }
 
+
+
 async function getCart() {
     if(connected) {
         var items = await  db.collection('DEALS').find().toArray();
         var cart = await  db.collection('CART').find().toArray();
-
+        console.log()
         var result = []
 
             items.forEach(item => {
+                console.log(item)
                 cart.forEach(cartItem => {
                     if(cartItem.itemId.toString() === item._id.toString()) {
-                        result.push(item)
+                        result.push({"_id": item._id,
+                                    "imageName": item.imageName,
+                                    "title": item.title,
+                                    "handsetCols": item.handsetCols,
+                                    "handsetRows": item.handsetRows,
+                                    "webCols": item.webCols,
+                                    "webRows": item.webRows,
+                                    "quantity": cartItem.quantity})
                     }
                 })
             });

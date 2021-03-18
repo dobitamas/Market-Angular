@@ -18,6 +18,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getCart().subscribe(resp => {
       this.items = resp;
+      console.log("ITEMS: ", this.items)
       this.notifierService.showNotification("Successfully loaded cart!", "Okay.", "success");
     },
     error => {
