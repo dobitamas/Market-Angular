@@ -6,8 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var dealsRouter = require('./routes/deals');
+var cartRouter = require('./routes/cart');
 
-var dbAbstractionLayer = require('./public/javascripts/DbAbstractionLayer');
 
 var cors = require('cors');
 
@@ -26,23 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use('/', indexRouter);
 app.use('/deals', dealsRouter);
-
-app.use('/addItem', function(req, res, next) {
-  dbAbstractionLayer.addItemToCart(req);
-  res.json(req.body.itemId)
-})
-
-app.use('/getCart', async function(req, res, next) {
-  var result = await dbAbstractionLayer.getCart();
-  console.log("RESULT: ", result)
-  res.json(result);
-})
-
-app.use('/deleteFromCart/', async function(req, res, next) {
-  console.log("IN DELETE")
-  var result = await dbAbstractionLayer.deleteFromCart(req);
-  res.json(result);
-})
+app.use('/cart', cartRouter);
 
 
 

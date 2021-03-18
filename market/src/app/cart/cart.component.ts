@@ -24,8 +24,10 @@ export class CartComponent implements OnInit {
 
 
   deleteFromCart(itemId: string) {
-    console.log("DELETION STARTED")
-    this.cartService.deleteFromCart(itemId);
+    this.cartService.deleteFromCart(itemId).subscribe(data => {
+      this.ngOnInit();
+    })
+
   }
 
 }

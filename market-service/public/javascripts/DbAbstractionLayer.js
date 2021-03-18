@@ -1,6 +1,8 @@
 var mongodb = require('mongodb');
 var mongoose = require('mongoose');
 
+ObjectId = require('mongodb').ObjectID;
+
 var connected = false;
 var db = null;
 
@@ -75,17 +77,19 @@ cartTable = mongoose.model('CART', cartSchema);
 
 
 
-function addItemToCart(req, res) {
+async function addItemToCart(req, res) {
+    
     var itemId = req.body.itemId;
+
 
     const newCartItem = {
         "itemId": mongodb.ObjectId(itemId)
     }
 
-    db.collection('CART').insertOne(newCartItem)
+    await db.collection('CART').insertOne(newCartItem)
         .then(result => console.log("SUCCESSFULLY ADDED ITEM TO CART"))
-        .catch(err => console.log("AN ERROR OCCOURED IN ADDING TO CART"));
-    
+        .catch(err => console.log("THIS IS THE ERROR: ", err));
+     
     
 }
 
@@ -97,12 +101,9 @@ async function getCart() {
         var result = []
 
             items.forEach(item => {
-                console.log("ITEM_ID: ", item._id)
                 cart.forEach(cartItem => {
-                    console.log("Cart ITEM: ", cartItem.itemId)
                     if(cartItem.itemId.toString() === item._id.toString()) {
                         result.push(item)
-                        console.log("FOUND ITEM")
                     }
                 })
             });
@@ -113,8 +114,9 @@ async function getCart() {
 }
 
 async function deleteFromCart(req) {
-    await db.collection('CART').deleteMany({ itemId : mongodb.ObjectId(req.headers.itemid) });
+    console.log('ITEMID: ', ObjectId(req.query.itemid))
 
+    return await db.collection('CART').deleteOne( { "itemId" : ObjectId(req.query.itemId.toString()) } );
 }
 
 
