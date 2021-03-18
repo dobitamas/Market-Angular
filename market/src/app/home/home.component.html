@@ -9,6 +9,7 @@
           </mat-card-title>
         </mat-card-header>
         <mat-card-actions>
+          <input matInput placeholder="Quantity" (change)="onChangeOfQuantity($event)">
           <button mat-button (click)="onAddClick(card['id'])" >Add</button>
           <button mat-button>View</button>
         </mat-card-actions>

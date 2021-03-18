@@ -18,6 +18,8 @@ export class HomeComponent {
   cardsForHandset = [];
   cardsForWeb = [];
 
+  quantity = 0;
+
   isHandset: boolean = false;
 
  isHandsetObserver: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -66,15 +68,27 @@ export class HomeComponent {
   }
 
   onAddClick(itemId : any) {
+    if(this.quantity != 0) {
+      this.cartService.addToCart(itemId, this.quantity).subscribe(
+        response => {
+          this.notifierService.showNotification("Added to cart!", "Okay", "success");
+        },
+        error => {
+          this.notifierService.showNotification("Could not add to cart :(", "Ok.", "error");
+        }
+      );
+    } else {
+      this.notifierService.showNotification("Please provide quantity!", "Okay.", "error");
+    }
+
+
     
-    this.cartService.addToCart(itemId, 1).subscribe(
-      response => {
-        this.notifierService.showNotification("Added to cart!", "Okay", "success");
-      },
-      error => {
-        this.notifierService.showNotification("Could not add to cart :(", "Ok.", "error");
-      }
-    );
     
   }
+
+  onChangeOfQuantity(event: any) {
+    this.quantity = event.target.value;
+  }
+
+
 }
